@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Django ORM Performance Optimization</title>
+    <link href="favicon.png" rel="icon" type="image/png"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/skeleton.css">
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      blockquote {
+        border-left: 4px solid darkgrey;
+        padding-left: 4px;
+      }
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      td {
+        margin-right: 5px;
+      }
+      th, td {
+        padding: 2px 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+    <script src="../static/js/remark-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  </head>
+  <body>
+    <script>
+      console.log("eyyy")
+      var slideshow = remark.create({
+        sourceUrl: './django_orm_performance.md',
+        ratio: '16:9',
+        slideNumberFormat: '%current%',
+        countIncrementalSlides: false
+      });
+
+      mermaid.initialize({ startOnLoad: false, cloneCssStyles: false });
+      function initMermaid(s) {
+        console.log("initMermaid: ", s)
+          const elements = document.querySelectorAll(".remark-slide")[s.getSlideIndex()]
+              ?.querySelectorAll('.mermaid-diagram p:not([data-processed="true"])');
+          if (elements) mermaid.init(undefined, elements);
+      }
+      // Render diagrams when there is a navigation to another slide
+      slideshow.on("afterShowSlide", initMermaid);
+
+    </script>
+
+  </body>
+</html>
